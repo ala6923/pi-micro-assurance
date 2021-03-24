@@ -21,7 +21,14 @@ public class Message implements Serializable{
 	
 	@Column(name="subject")
 	private String subject;
-	
+	public Message(int id, String subject, String body, Date sendingDate, String status) {
+		super();
+		this.id = id;
+		this.subject = subject;
+		this.body = body;
+		this.sendingDate = sendingDate;
+		this.status = status;
+	}
 	@Column(name="body")
 	private String body;
 	
@@ -30,6 +37,48 @@ public class Message implements Serializable{
 	
 	@Column(name="status")
 	private String status;
+	
+	
+
+	public int getId() {
+		return id;
+	}
+
+	public String getSubject() {
+		return subject;
+	}
+
+	public String getBody() {
+		return body;
+	}
+
+	public Date getSendingDate() {
+		return sendingDate;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+
+	public void setBody(String body) {
+		this.body = body;
+	}
+
+	public void setSendingDate(Date sendingDate) {
+		this.sendingDate = sendingDate;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	
 	
 	
