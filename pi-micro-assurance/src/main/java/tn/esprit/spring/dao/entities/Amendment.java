@@ -24,6 +24,37 @@ public class Amendment implements Serializable {
 	
 	@Temporal (TemporalType.DATE)
 	private Date amendmentDate;
+	public int getId() {
+		return id;
+	}
+
+	public Date getAmendmentDate() {
+		return amendmentDate;
+	}
+
+	public Contract getContract() {
+		return contract;
+	}
+
+	public Sinister getSinister() {
+		return sinister;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setAmendmentDate(Date amendmentDate) {
+		this.amendmentDate = amendmentDate;
+	}
+
+	public void setContract(Contract contract) {
+		this.contract = contract;
+	}
+
+	public void setSinister(Sinister sinister) {
+		this.sinister = sinister;
+	}
 	
 	
 	@ManyToOne(cascade = CascadeType.ALL)
