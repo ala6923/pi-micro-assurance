@@ -39,6 +39,82 @@ public class Arrangment implements Serializable{
 	
 	@Column(name="amountArranged")
 	private int amountArranged;
+	public Arrangment(int id, Date arrangmentDate, int expertCost, String franchise, String indemnity,
+			String arrangmentMethod, int amountArranged, Sinister sinister) {
+		super();
+		this.id = id;
+		this.arrangmentDate = arrangmentDate;
+		this.expertCost = expertCost;
+		this.franchise = franchise;
+		this.indemnity = indemnity;
+		this.arrangmentMethod = arrangmentMethod;
+		this.amountArranged = amountArranged;
+		this.sinister = sinister;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public Date getArrangmentDate() {
+		return arrangmentDate;
+	}
+
+	public int getExpertCost() {
+		return expertCost;
+	}
+
+	public String getFranchise() {
+		return franchise;
+	}
+
+	public String getIndemnity() {
+		return indemnity;
+	}
+
+	public String getArrangmentMethod() {
+		return arrangmentMethod;
+	}
+
+	public int getAmountArranged() {
+		return amountArranged;
+	}
+
+	public Sinister getSinister() {
+		return sinister;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setArrangmentDate(Date arrangmentDate) {
+		this.arrangmentDate = arrangmentDate;
+	}
+
+	public void setExpertCost(int expertCost) {
+		this.expertCost = expertCost;
+	}
+
+	public void setFranchise(String franchise) {
+		this.franchise = franchise;
+	}
+
+	public void setIndemnity(String indemnity) {
+		this.indemnity = indemnity;
+	}
+
+	public void setArrangmentMethod(String arrangmentMethod) {
+		this.arrangmentMethod = arrangmentMethod;
+	}
+
+	public void setAmountArranged(int amountArranged) {
+		this.amountArranged = amountArranged;
+	}
+
+	public void setSinister(Sinister sinister) {
+		this.sinister = sinister;
+	}
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	Sinister sinister;
