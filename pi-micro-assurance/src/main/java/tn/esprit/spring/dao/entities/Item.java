@@ -15,5 +15,18 @@ public class Item implements Serializable{
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column(name="Item_ID")
 	private int id; // Clé primaire
+	public Item(int id) {
+		super();
+		this.id = id;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 
 }
