@@ -15,6 +15,22 @@ public class Admin  extends User {
 	
 	@Column(name="Code")
 	private int CodePin; 
+	public int getCodePin() {
+		return CodePin;
+	}
+
+	public void setCodePin(int codePin) {
+		CodePin = codePin;
+	}
+
+	public Admin(int codePin) {
+		super();
+		CodePin = codePin;
+	} 
+	
+
+	
+
 	
 
 	
