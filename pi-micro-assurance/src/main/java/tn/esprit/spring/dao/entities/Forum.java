@@ -15,5 +15,18 @@ public class Forum implements Serializable {
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column(name="Forum_ID")
 	private int id; // Clé primaire
+	public Forum(int id) {
+		super();
+		this.id = id;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 
 }
