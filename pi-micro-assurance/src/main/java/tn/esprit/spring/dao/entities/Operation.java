@@ -18,5 +18,27 @@ public class Operation implements Serializable{
 	
 	@Column(name="operationLabel")
 	private String operationLabel;
+	public Operation(int id, String operationLabel) {
+		super();
+		this.id = id;
+		this.operationLabel = operationLabel;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public String getOperationLabel() {
+		return operationLabel;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setOperationLabel(String operationLabel) {
+		this.operationLabel = operationLabel;
+	}
+
 
 }
