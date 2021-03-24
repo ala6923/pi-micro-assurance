@@ -28,6 +28,46 @@ public class Provisioning implements Serializable{
 	
 	@Column(name="provisioningType")
 	private String provisioningType;
+	public Provisioning(int id, Date startDate, Date endDate, String provisioningType) {
+		super();
+		this.id = id;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.provisioningType = provisioningType;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public String getProvisioningType() {
+		return provisioningType;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+
+	public void setProvisioningType(String provisioningType) {
+		this.provisioningType = provisioningType;
+	}
+
 	
 	
 	
