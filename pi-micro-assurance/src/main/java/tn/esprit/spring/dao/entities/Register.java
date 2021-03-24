@@ -18,5 +18,27 @@ public class Register implements Serializable{
 	
 	@Column(name="registerLabel")
 	private String registerLabel;
+	public Register(int id, String registerLabel) {
+		super();
+		this.id = id;
+		this.registerLabel = registerLabel;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public String getRegisterLabel() {
+		return registerLabel;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setRegisterLabel(String registerLabel) {
+		this.registerLabel = registerLabel;
+	}
+
 
 }
