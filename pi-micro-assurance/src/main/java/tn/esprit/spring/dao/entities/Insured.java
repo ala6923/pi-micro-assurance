@@ -32,6 +32,64 @@ public class Insured extends User  {
 	
 	@Column(name="Insured_Age")
 	private int age;
+	public Insured(Date recordingDate, String healthStatus, String civilStatus, int age, Set<Contract> contracts,
+			Set<Claims> claims) {
+		super();
+		this.recordingDate = recordingDate;
+		this.healthStatus = healthStatus;
+		this.civilStatus = civilStatus;
+		this.age = age;
+		this.contracts = contracts;
+		this.claims = claims;
+	}
+
+	public Date getRecordingDate() {
+		return recordingDate;
+	}
+
+	public String getHealthStatus() {
+		return healthStatus;
+	}
+
+	public String getCivilStatus() {
+		return civilStatus;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public Set<Contract> getContracts() {
+		return contracts;
+	}
+
+	public Set<Claims> getClaims() {
+		return claims;
+	}
+
+	public void setRecordingDate(Date recordingDate) {
+		this.recordingDate = recordingDate;
+	}
+
+	public void setHealthStatus(String healthStatus) {
+		this.healthStatus = healthStatus;
+	}
+
+	public void setCivilStatus(String civilStatus) {
+		this.civilStatus = civilStatus;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public void setContracts(Set<Contract> contracts) {
+		this.contracts = contracts;
+	}
+
+	public void setClaims(Set<Claims> claims) {
+		this.claims = claims;
+	}
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	private Set<Contract> contracts;
