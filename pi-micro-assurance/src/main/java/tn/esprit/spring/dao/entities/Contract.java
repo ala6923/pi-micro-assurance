@@ -1,12 +1,15 @@
 package tn.esprit.spring.dao.entities;
 
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
-
+   
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,9 +27,10 @@ public class Contract implements Serializable {
 	@Column(name="Contract_ID")
 	private int id; // Clé primaire
 	
+	
 	@Column(name="ContractType")
 	@Enumerated(EnumType.STRING)
-	Category category ;
+	private Category category;
 	
 	@Temporal (TemporalType.DATE)
 	private Date signDate;

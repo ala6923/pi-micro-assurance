@@ -13,7 +13,7 @@ import javax.persistence.InheritanceType;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public  class User implements Serializable{
+public abstract class User implements Serializable{
 	
 	/**
 	 * 
@@ -24,19 +24,19 @@ public  class User implements Serializable{
 	@Column(name="User_ID")
 	private int id; // Clé primaire
 	
-	@Column(name="USER_NAME")
+	@Column(name="USER_NAME" , length=50, nullable=false, unique=false)
 	private String name;
 	
-	@Column(name="USER_FirstNAME")
+	@Column(name="USER_FirstNAME", length=50, nullable=false, unique=false)
 	private String firstname;
 	
-	@Column(name="USER_CIN")
+	@Column(name="USER_CIN", length=8, nullable=false, unique=false)
 	private int Cin;
 	
-	@Column(name="USER_Email")
+	@Column(name="USER_Email", length=40, nullable=false, unique=false)
 	private String email;
 	
-	@Column(name="USER_PhoneNumber")
+	@Column(name="USER_PhoneNumber", length=15, nullable=false, unique=false)
 	private int phoneNumber;
 	
 	@Column(name="USER_Adress")
@@ -51,7 +51,7 @@ public  class User implements Serializable{
 	@Column(name="USER_status")
 	private String status;
 	
-	
+	public User(){};
 	
 	public User(int id, String name, String firstname, int cin, String email, int phoneNumber, String adress,
 			String login, String password, String status) {

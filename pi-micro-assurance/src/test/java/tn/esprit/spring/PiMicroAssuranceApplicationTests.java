@@ -8,6 +8,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.sun.el.parser.ParseException;
 
+import tn.esprit.spring.dao.entities.Insured;
 import tn.esprit.spring.dao.entities.User;
 import tn.esprit.spring.service.UserServiceInterface;
 
@@ -25,10 +26,11 @@ class PiMicroAssuranceApplicationTests  {
 	@Test
 	void contextLoads() throws ParseException {
     us.retrieveAllUsers();             
-		User u2= new User("aa","bb");
+		Insured u2= new Insured();
+		u2.setName("name");
+		u2.setFirstname("firstname");
 		us.addUser(u2);
-		User u = new User( "abderrahim" , "makina" ,193587 ,"abderrahim.makina@esprit.tn", 2424210 ,"48ariensoghra","rahMak" ,"azerty123","activated");
-		us.addUser(u);
+		
 	}
 
 }
