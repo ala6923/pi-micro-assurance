@@ -21,8 +21,35 @@ public class Insurer extends User  {
 	private String matricul;
 	
 	
+	
 	@OneToMany(cascade = CascadeType.ALL)
 	private Set<Contract> contracts;
+	public Insurer(String matricul, Set<Contract> contracts) {
+		super();
+		this.matricul = matricul;
+		this.contracts = contracts;
+	}
+
+
+	public String getMatricul() {
+		return matricul;
+	}
+
+
+	public Set<Contract> getContracts() {
+		return contracts;
+	}
+
+
+	public void setMatricul(String matricul) {
+		this.matricul = matricul;
+	}
+
+
+	public void setContracts(Set<Contract> contracts) {
+		this.contracts = contracts;
+	}
+
 	
 	
 
