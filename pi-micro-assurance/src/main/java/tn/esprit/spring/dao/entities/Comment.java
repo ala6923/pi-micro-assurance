@@ -15,5 +15,17 @@ public class Comment implements Serializable{
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column(name="Comment_ID")
 	private int id; // Clé primaire
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Comment(int id) {
+		super();
+		this.id = id;
+	}
 
 }
