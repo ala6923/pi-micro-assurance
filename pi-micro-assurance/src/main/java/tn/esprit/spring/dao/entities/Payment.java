@@ -32,6 +32,65 @@ public class Payment implements Serializable {
 	
 	@Column(name="paymentMethod")
 	private String paymentMethod;
+	public Payment(int id, String paymentCode, Date paymentDate, double amountPayed, String paymentMethod,
+			Contract contract) {
+		super();
+		this.id = id;
+		this.paymentCode = paymentCode;
+		this.paymentDate = paymentDate;
+		this.amountPayed = amountPayed;
+		this.paymentMethod = paymentMethod;
+		this.contract = contract;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public String getPaymentCode() {
+		return paymentCode;
+	}
+
+	public Date getPaymentDate() {
+		return paymentDate;
+	}
+
+	public double getAmountPayed() {
+		return amountPayed;
+	}
+
+	public String getPaymentMethod() {
+		return paymentMethod;
+	}
+
+	public Contract getContract() {
+		return contract;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setPaymentCode(String paymentCode) {
+		this.paymentCode = paymentCode;
+	}
+
+	public void setPaymentDate(Date paymentDate) {
+		this.paymentDate = paymentDate;
+	}
+
+	public void setAmountPayed(double amountPayed) {
+		this.amountPayed = amountPayed;
+	}
+
+	public void setPaymentMethod(String paymentMethod) {
+		this.paymentMethod = paymentMethod;
+	}
+
+	public void setContract(Contract contract) {
+		this.contract = contract;
+	}
+
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	Contract contract;
