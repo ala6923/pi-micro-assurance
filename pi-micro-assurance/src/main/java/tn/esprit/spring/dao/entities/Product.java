@@ -29,6 +29,43 @@ public class Product implements Serializable {
 	
 	@Column(name="productScoring")
 	private int productScoring;
+	public Product(int id, Category category, int productScoring) {
+		super();
+		this.id = id;
+		this.category = category;
+		this.productScoring = productScoring;
+	}
+
+
+	public int getId() {
+		return id;
+	}
+
+
+	public Category getCategory() {
+		return category;
+	}
+
+
+	public int getProductScoring() {
+		return productScoring;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+
+	public void setProductScoring(int productScoring) {
+		this.productScoring = productScoring;
+	}
+
 
 }
 
