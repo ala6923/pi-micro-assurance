@@ -15,5 +15,17 @@ public class Vote implements Serializable {
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column(name="User_ID")
 	private int id; // Clé primaire
+	public Vote(int id) {
+		super();
+		this.id = id;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 }
