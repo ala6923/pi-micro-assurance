@@ -16,14 +16,14 @@ public class Claims implements Serializable {
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column(name="Claims_ID")
-	private int id; // Clé primaire
+	private long id; // Clé primaire
 	
 	@Column(name="claimsDescription")
 	private String description;
 	
 	@Column(name="claimsStatus")
 	private int status;
-	public Claims(int id, String description, int status, Insured insured) {
+	public Claims(long id, String description, int status, Insured insured) {
 		super();
 		this.id = id;
 		this.description = description;
@@ -31,7 +31,7 @@ public class Claims implements Serializable {
 		this.insured = insured;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
@@ -47,7 +47,7 @@ public class Claims implements Serializable {
 		return insured;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

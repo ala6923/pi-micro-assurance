@@ -25,7 +25,7 @@ public class Contract implements Serializable {
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column(name="Contract_ID")
-	private int id; // Clé primaire
+	private Long id; // Clé primaire
 	
 	
 	@Column(name="ContractType")
@@ -70,7 +70,7 @@ public class Contract implements Serializable {
 	
 	@Column(name="QRCode")
 	private String QRCode;
-	public Contract(int id, Category category, Date signDate, Date deadLineDate, String police, double payedAmount,
+	public Contract(Long id, Category category, Date signDate, Date deadLineDate, String police, double payedAmount,
 			double reminingAmount, double netPremiuim, double totalPemium, String status, double discount, double tax,
 			double comission, double reInsurancePart, String qRCode, Insurer insurer, Insured insured,
 			Set<Payment> payments, Set<Product> products, Set<Amendment> amendments) {
@@ -98,7 +98,7 @@ public class Contract implements Serializable {
 	}
 
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -198,7 +198,7 @@ public class Contract implements Serializable {
 	}
 
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

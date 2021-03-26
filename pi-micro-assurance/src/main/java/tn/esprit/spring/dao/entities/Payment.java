@@ -24,7 +24,7 @@ public class Payment implements Serializable {
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column(name="Payment_ID")
-	private int id; // Clé primaire
+	private Long id; // Clé primaire
 	
 	@Column(name="paymentCode")
 	private String paymentCode;
@@ -41,7 +41,7 @@ public class Payment implements Serializable {
 	@OneToOne(cascade = CascadeType.ALL, mappedBy="payment")
 	private Contract contract;
 	
-	public Payment(int id, String paymentCode, Date paymentDate, double amountPayed, String paymentMethod,
+	public Payment(Long id, String paymentCode, Date paymentDate, double amountPayed, String paymentMethod,
 			Contract contract) {
 		super();
 		this.id = id;
@@ -52,7 +52,7 @@ public class Payment implements Serializable {
 		this.contract = contract;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -76,7 +76,7 @@ public class Payment implements Serializable {
 		return contract;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

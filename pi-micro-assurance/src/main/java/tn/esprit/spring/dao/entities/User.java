@@ -22,7 +22,7 @@ public abstract class User implements Serializable{
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column(name="User_ID")
-	private int id; // Clé primaire
+	private long id; // Clé primaire
 	
 	@Column(name="USER_NAME" , length=50, nullable=false, unique=false)
 	private String name;
@@ -72,7 +72,7 @@ public abstract class User implements Serializable{
 		return serialVersionUID;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 

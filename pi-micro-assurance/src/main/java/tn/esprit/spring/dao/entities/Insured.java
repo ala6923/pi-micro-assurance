@@ -16,6 +16,7 @@ import javax.persistence.TemporalType;
 
 
 
+@SuppressWarnings("serial")
 @Entity
 @PrimaryKeyJoinColumn(name = "User_ID")
 public class Insured extends User  {

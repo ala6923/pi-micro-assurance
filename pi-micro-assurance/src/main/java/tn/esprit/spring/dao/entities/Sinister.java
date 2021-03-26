@@ -21,7 +21,7 @@ public class Sinister implements Serializable{
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column(name="Sinister_ID")
-	private int id; // Clé primaire
+	private Long id; // Clé primaire
 	
 	@Temporal (TemporalType.DATE)
 	private Date declarationDate;
@@ -43,7 +43,7 @@ public class Sinister implements Serializable{
 	
 	@Column(name="sinisterType")
 	private String sinisterType;
-	public Sinister(int id, Date declarationDate, Date sinisterDate, String sinisterPlace, int sinisterNumber,
+	public Sinister(Long id, Date declarationDate, Date sinisterDate, String sinisterPlace, int sinisterNumber,
 			String sinisterDescription, String sinisterStatus, String sinisterType, Set<Amendment> amendments,
 			Set<Arrangment> arrangments) {
 		super();
@@ -59,7 +59,7 @@ public class Sinister implements Serializable{
 		this.arrangments = arrangments;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -99,7 +99,7 @@ public class Sinister implements Serializable{
 		return arrangments;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

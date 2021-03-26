@@ -19,7 +19,7 @@ public class Arrangment implements Serializable{
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column(name="Arrangment_ID")
-	private int id; // Clé primaire
+	private long id; // Clé primaire
 	
 	@Temporal (TemporalType.DATE)
 	@Column(name="arrangmentDate")
@@ -52,7 +52,7 @@ public class Arrangment implements Serializable{
 		this.sinister = sinister;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 

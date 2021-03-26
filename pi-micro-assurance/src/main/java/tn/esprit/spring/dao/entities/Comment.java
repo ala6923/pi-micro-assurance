@@ -14,8 +14,8 @@ public class Comment implements Serializable{
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column(name="Comment_ID")
-	private int id; // Clé primaire
-	public int getId() {
+	private long id; // Clé primaire
+	public long getId() {
 		return id;
 	}
 
@@ -23,7 +23,7 @@ public class Comment implements Serializable{
 		this.id = id;
 	}
 
-	public Comment(int id) {
+	public Comment(long id) {
 		super();
 		this.id = id;
 	}

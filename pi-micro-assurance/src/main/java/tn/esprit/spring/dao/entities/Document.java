@@ -14,17 +14,17 @@ public class Document implements Serializable{
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column(name="Document_ID")
-	private int id; // Clé primaire
+	private Long id; // Clé primaire
 	
 	@Column(name="label")
 	private String label;
-	public Document(int id, String label) {
+	public Document(long id, String label) {
 		super();
 		this.id = id;
 		this.label = label;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
@@ -32,7 +32,7 @@ public class Document implements Serializable{
 		return label;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

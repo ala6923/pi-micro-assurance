@@ -17,11 +17,11 @@ public class Message implements Serializable{
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column(name="Message_ID")
-	private int id; // Clé primaire
+	private long id; // Clé primaire
 	
 	@Column(name="subject")
 	private String subject;
-	public Message(int id, String subject, String body, Date sendingDate, String status) {
+	public Message(long id, String subject, String body, Date sendingDate, String status) {
 		super();
 		this.id = id;
 		this.subject = subject;
@@ -40,7 +40,7 @@ public class Message implements Serializable{
 	
 	
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
@@ -60,7 +60,7 @@ public class Message implements Serializable{
 		return status;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

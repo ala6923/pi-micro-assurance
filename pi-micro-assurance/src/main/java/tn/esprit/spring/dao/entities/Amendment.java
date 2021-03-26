@@ -20,11 +20,11 @@ public class Amendment implements Serializable {
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column(name="Amendment_ID")
-	private int id; // Clé primaire
+	private long id; // Clé primaire
 	
 	@Temporal (TemporalType.DATE)
 	private Date amendmentDate;
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
