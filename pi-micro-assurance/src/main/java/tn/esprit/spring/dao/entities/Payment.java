@@ -10,10 +10,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
+@Table(name="T_Payment")
 public class Payment implements Serializable {
 	
 	@Id
@@ -32,6 +37,10 @@ public class Payment implements Serializable {
 	
 	@Column(name="paymentMethod")
 	private String paymentMethod;
+	@JsonIgnore
+	@OneToOne(cascade = CascadeType.ALL, mappedBy="payment")
+	private Contract contract;
+	
 	public Payment(int id, String paymentCode, Date paymentDate, double amountPayed, String paymentMethod,
 			Contract contract) {
 		super();
@@ -92,8 +101,7 @@ public class Payment implements Serializable {
 	}
 
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	Contract contract;
+	
 	
 	
 	
