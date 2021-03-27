@@ -1,6 +1,7 @@
 package tn.esprit.spring.dao.entities;
 
 
+import java.awt.image.BufferedImage;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
@@ -78,10 +79,10 @@ public class Contract implements Serializable {
 	private Date LastUpdate;
 	
 	@Column(name="QRCode")
-	private String QRCode;
+	private BufferedImage QRCode;
 	public Contract(Long id, Category category, Date signDate, Date deadLineDate, String police, double payedAmount,
 			double reminingAmount, double netPremiuim, double totalPemium, String status, double discount, double tax,
-			double comission, double reInsurancePart, String qRCode, Insurer insurer, Insured insured,
+			double comission, double reInsurancePart,  Insurer insurer, Insured insured,
 			Set<Payment> payments, Set<Product> products, Set<Amendment> amendments) {
 		super();
 		this.id = id;
@@ -98,7 +99,12 @@ public class Contract implements Serializable {
 		this.tax = tax;
 		this.comission = comission;
 		this.reInsurancePart = reInsurancePart;
-		QRCode = qRCode;
+		try {
+			QRCode = QRcode.generateQRCodeImage(id.toString());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		this.insurer = insurer;
 		this.insured = insured;
 		this.payments = payments;
@@ -107,7 +113,7 @@ public class Contract implements Serializable {
 	}
 
 
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
@@ -177,10 +183,7 @@ public class Contract implements Serializable {
 	}
 
 
-	public String getQRCode() {
-		return QRCode;
-	}
-
+	
 
 	public Insurer getInsurer() {
 		return insurer;
@@ -277,10 +280,7 @@ public class Contract implements Serializable {
 	}
 
 
-	public void setQRCode(String qRCode) {
-		QRCode = qRCode;
-	}
-
+	
 
 	public void setInsurer(Insurer insurer) {
 		this.insurer = insurer;
@@ -316,6 +316,21 @@ public class Contract implements Serializable {
 	public void setLastUpdate(Date lastUpdate) {
 		LastUpdate = lastUpdate;
 	}
+
+
+	
+	
+
+	public BufferedImage getQRCode() {
+		return QRCode;
+	}
+
+
+	public void setQRCode(BufferedImage qRCode) {
+		QRCode = qRCode;
+	}
+
+
 
 
 
