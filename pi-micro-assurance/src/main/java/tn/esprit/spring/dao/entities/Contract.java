@@ -74,6 +74,9 @@ public class Contract implements Serializable {
 	@Column(name="reInsurancePart")
 	private double reInsurancePart;
 	
+	@Column(name="LastUpdate")
+	private Date LastUpdate;
+	
 	@Column(name="QRCode")
 	private String QRCode;
 	public Contract(Long id, Category category, Date signDate, Date deadLineDate, String police, double payedAmount,
@@ -305,6 +308,17 @@ public class Contract implements Serializable {
 
 
 	
+	public Date getLastUpdate() {
+		return LastUpdate;
+	}
+
+
+	public void setLastUpdate(Date lastUpdate) {
+		LastUpdate = lastUpdate;
+	}
+
+
+
 	@ManyToOne(cascade = CascadeType.ALL)
 	Insurer insurer;
 	
