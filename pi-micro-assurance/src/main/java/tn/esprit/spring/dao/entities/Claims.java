@@ -1,6 +1,7 @@
 package tn.esprit.spring.dao.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,10 +10,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import tn.esprit.spring.dao.entities.Insured;
 
 @Entity
+@Table(name="T_Claims")
 public class Claims implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column(name="Claims_ID")
@@ -20,9 +30,11 @@ public class Claims implements Serializable {
 	
 	@Column(name="claimsDescription")
 	private String description;
-	
+	@ManyToOne
+	private  Insured Insured;
 	@Column(name="claimsStatus")
-	private int status;
+	private int status=0;
+	private Date dateClaim;
 	public Claims(long id, String description, int status, Insured insured) {
 		super();
 		this.id = id;
@@ -64,7 +76,21 @@ public class Claims implements Serializable {
 	}
 
 	
+
+
+	public Date getDateClaim() {
+		return dateClaim;
+	}
+
+	public void setDateClaim(Date dateClaim) {
+		this.dateClaim = dateClaim;
+	}
+
+
+
+
 	@ManyToOne(cascade = CascadeType.ALL)
 	Insured insured;
+	
 
 }

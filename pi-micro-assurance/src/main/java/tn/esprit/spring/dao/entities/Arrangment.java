@@ -16,6 +16,11 @@ import javax.persistence.TemporalType;
 @Entity
 public class Arrangment implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column(name="Arrangment_ID")

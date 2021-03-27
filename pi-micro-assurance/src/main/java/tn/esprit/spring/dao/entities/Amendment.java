@@ -17,6 +17,11 @@ import javax.persistence.TemporalType;
 public class Amendment implements Serializable {
 
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column(name="Amendment_ID")

@@ -1,9 +1,6 @@
 package tn.esprit.spring.dao.entities;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 
@@ -13,8 +10,13 @@ import javax.persistence.PrimaryKeyJoinColumn;
 @PrimaryKeyJoinColumn(name = "User_ID")
 public class Admin  extends User {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Column(name="Code")
 	private int CodePin; 
+	
 	public int getCodePin() {
 		return CodePin;
 	}

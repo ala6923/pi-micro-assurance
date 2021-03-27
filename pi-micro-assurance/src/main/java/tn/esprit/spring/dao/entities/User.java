@@ -1,8 +1,6 @@
 package tn.esprit.spring.dao.entities;
 
 import java.io.Serializable;
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,10 +17,15 @@ public abstract class User implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
+	 */
+	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column(name="User_ID")
-	private long id; // Clé primaire
+	private long id = 1L;// Clé primaire
 	
 	@Column(name="USER_NAME" , length=50, nullable=false, unique=false)
 	private String name;

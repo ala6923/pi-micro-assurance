@@ -2,7 +2,7 @@ package tn.esprit.spring.dao.entities;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -10,15 +10,22 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+
 
 @Entity
 public class Product implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
+
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column(name="Product_ID")
-	private int id; // Clé primaire
+	private long id; // Clé primaire
 	
 	
 	
@@ -37,7 +44,7 @@ public class Product implements Serializable {
 	}
 
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
@@ -52,7 +59,7 @@ public class Product implements Serializable {
 	}
 
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
