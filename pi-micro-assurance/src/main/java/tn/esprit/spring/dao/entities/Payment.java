@@ -42,7 +42,7 @@ public class Payment implements Serializable {
 	@Column(name="paymentMethod")
 	private String paymentMethod;
 	@JsonIgnore
-	@OneToOne(cascade = CascadeType.ALL, mappedBy="payment")
+	@OneToOne(cascade = CascadeType.ALL)
 	private Contract contract;
 	
 	public Payment(Long id, String paymentCode, Date paymentDate, double amountPayed, String paymentMethod,
