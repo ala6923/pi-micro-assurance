@@ -1,5 +1,6 @@
 package tn.esprit.spring;
 
+import java.util.Date;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,4 +34,39 @@ class PiMicroAssuranceApplicationTests  {
 		
 	}
 
+	@Autowired 
+	private ProductRepository productRepository;
+	
+	@Test
+	public void testCreateProduct() {
+		Product prod = new Product("life_insurance",18);
+		productRepository.save(prod);
+	}
+	
+	@Test
+	public void testFindProduct() {
+		Product p = productRepository.findById(1L).get();
+		System.out.println(p);
+	}
+	
+	@Test
+	public void testUpdateproduct() {
+		Product p = productRepository.findById(1L).get();
+		p.setProductScoring(19);
+		productRepository.save(p);
+		System.out.println(p);
+	}
+	
+	@Test
+	public void testDeleteProduct()
+	{
+		productRepository.deleteById(1L);
+	}
+	
+	@Test
+	public void testFindAllProducts() {
+		List<Product> prods = productRepository.findAll();
+		for (Product p:prods)
+			System.out.println(p);
+	}
 }
