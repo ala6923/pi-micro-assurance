@@ -1,57 +1,50 @@
 package tn.esprit.spring.service;
 
+
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import tn.esprit.spring.dao.entities.User;
-import tn.esprit.spring.repository.UserRepository;
+import tn.esprit.spring.dao.entities.Document;
+import tn.esprit.spring.repository.DocumentRepository;
+
 
 @Service
-public class UserServiceImpl implements IUserService{
-	
-
-
-	
+public class DocumentServiceImpl implements IDocumentService{
 	
 	@Autowired
-	UserRepository userRep;
+	DocumentRepository documentRep;
 
 	@Override
-	public List<User> retrieveAllUsers() {
+	public List<Document> retrieveAllDocuments() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public User addUser(User u) {
+	public Document addDocument(Document d) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void deleteUser(int id) {
+	public void deleteDocument(int id) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public User updateUser(User u) {
+	public Document updateDocument(Document d) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public User retrieveUser(int id) {
+	public Document retrieveDocument(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	
-	
-	
-	
-	
-	
 }

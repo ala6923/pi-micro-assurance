@@ -17,12 +17,39 @@ import javax.persistence.PrimaryKeyJoinColumn;
 @PrimaryKeyJoinColumn(name = "User_ID")
 public class Insurer extends User  {
 	
+	public Insurer(String matricul, Set<Contract> contracts) {
+		super();
+		this.matricul = matricul;
+		this.contracts = contracts;
+	}
+
+
 	@Column(name="InsurerMatricule")
 	private String matricul;
 	
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	private Set<Contract> contracts;
+
+
+	public String getMatricul() {
+		return matricul;
+	}
+
+
+	public void setMatricul(String matricul) {
+		this.matricul = matricul;
+	}
+
+
+	public Set<Contract> getContracts() {
+		return contracts;
+	}
+
+
+	public void setContracts(Set<Contract> contracts) {
+		this.contracts = contracts;
+	}
 	
 	
 

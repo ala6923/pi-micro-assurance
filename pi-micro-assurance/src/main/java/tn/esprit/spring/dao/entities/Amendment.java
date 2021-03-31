@@ -28,8 +28,37 @@ public class Amendment implements Serializable {
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	Contract contract;
+
+
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+	public Date getAmendmentDate() {
+		return amendmentDate;
+	}
+
+
+	public void setAmendmentDate(Date amendmentDate) {
+		this.amendmentDate = amendmentDate;
+	}
+
+
+	public Contract getContract() {
+		return contract;
+	}
+
+
+	public void setContract(Contract contract) {
+		this.contract = contract;
+	}
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	Sinister sinister;
+
 	
 }

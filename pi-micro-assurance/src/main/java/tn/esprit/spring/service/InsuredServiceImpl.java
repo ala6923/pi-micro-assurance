@@ -1,57 +1,48 @@
 package tn.esprit.spring.service;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import tn.esprit.spring.dao.entities.User;
-import tn.esprit.spring.repository.UserRepository;
+import tn.esprit.spring.dao.entities.Insured;
+import tn.esprit.spring.repository.InsuredRepository;
+
 
 @Service
-public class UserServiceImpl implements IUserService{
-	
-
-
+public class InsuredServiceImpl implements IInsuredService {
 	
 	
 	@Autowired
-	UserRepository userRep;
+	InsuredRepository insuredRep;
 
 	@Override
-	public List<User> retrieveAllUsers() {
+	public List<Insured> retrieveAllInsureds() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public User addUser(User u) {
+	public Insured addInsured(Insured insured) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void deleteUser(int id) {
+	public void deleteInsured(int id) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public User updateUser(User u) {
+	public Insured updateInsured(Insured insured) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public User retrieveUser(int id) {
+	public Insured retrieveInsured(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	
-	
-	
-	
-	
-	
 }

@@ -4,14 +4,12 @@ import java.util.List;
 
 import tn.esprit.spring.dao.entities.User;
 
-
-
-public interface UserServiceInterface {
+public interface IUserService {
 	
 	List<User> retrieveAllUsers();
 	User addUser(User u);
-	 void deleteUser(String id);
+	 void deleteUser(int id);
 	 User updateUser(User u);
-	 User retrieveUser(String id);
+	 User retrieveUser(int id);
 
 }

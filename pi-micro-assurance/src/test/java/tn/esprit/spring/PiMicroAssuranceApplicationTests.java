@@ -9,14 +9,14 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.sun.el.parser.ParseException;
 
 import tn.esprit.spring.dao.entities.User;
-import tn.esprit.spring.service.UserServiceInterface;
+import tn.esprit.spring.service.IUserService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 class PiMicroAssuranceApplicationTests  {
 	
 	@Autowired
-	UserServiceInterface us;
+	IUserService us;
 	
 	
 	

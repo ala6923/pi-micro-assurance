@@ -1,57 +1,51 @@
 package tn.esprit.spring.service;
 
+
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import tn.esprit.spring.dao.entities.User;
-import tn.esprit.spring.repository.UserRepository;
+import tn.esprit.spring.dao.entities.Contract;
+import tn.esprit.spring.repository.ContractRepository;
+
 
 @Service
-public class UserServiceImpl implements IUserService{
-	
-
-
+public class ContractServiceImpl implements IContractService {
 	
 	
 	@Autowired
-	UserRepository userRep;
+	ContractRepository contractRep;
 
 	@Override
-	public List<User> retrieveAllUsers() {
+	public List<Contract> retrieveAllContracts() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public User addUser(User u) {
+	public Contract addContract(Contract contract) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void deleteUser(int id) {
+	public void deleteContract(int id) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public User updateUser(User u) {
+	public Contract updateContract(Contract contract) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public User retrieveUser(int id) {
+	public Contract retrieveContract(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	
-	
-	
-	
-	
-	
 }
