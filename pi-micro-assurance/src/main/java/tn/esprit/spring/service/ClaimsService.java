@@ -14,6 +14,11 @@ import tn.esprit.spring.repository.InsuredRepository;
 public class ClaimsService implements IClaimsService {
 	@Autowired
 	ClaimRepository clRep;
+	
+	
+	
+	
+	
 	@Autowired
 	InsuredRepository insRep;
 	@Override
