@@ -7,8 +7,8 @@ import tn.esprit.spring.dao.entities.Claims;
 
 public interface IClaimsService {
 	public long SendClaim(Claims rec,long insuredId);
-	public List<String> RetrieveAllClaims();
-	public List<String> RetrieveNewClaims();
+	public List<Claims> RetrieveAllClaims();
+	public List<Claims> RetrieveNewClaims();
 	public List<Claims> GetListCliamsLastXDays(int xDays);
 	public void DeleteClaimById(long id);
 	public Claims OpenClaimById(long id);

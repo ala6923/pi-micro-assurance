@@ -42,18 +42,18 @@ public class ClaimsService implements IClaimsService {
 	}
 
 	@Override
-	public List<String> RetrieveAllClaims() {
+	public List<Claims> RetrieveAllClaims() {
 		// TODO Auto-generated method stub
 		
-		List<String>	Claims =clRep.ViewClaims();
+		List<Claims>	Claims =clRep.ViewClaims();
 		return Claims;
 		
 	}
 
 	@Override
-	public List<String> RetrieveNewClaims() {
+	public List<Claims> RetrieveNewClaims() {
 		// TODO Auto-generated method stub
-		List<String>	Claims =clRep.ViewNewClaims();
+		List<Claims>	Claims =clRep.ViewNewClaims();
 		return Claims;
 		
 	}
