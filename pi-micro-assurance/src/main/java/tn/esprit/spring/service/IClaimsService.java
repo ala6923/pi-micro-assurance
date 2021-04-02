@@ -6,9 +6,13 @@ import tn.esprit.spring.dao.entities.Claims;
 
 
 public interface IClaimsService {
-	public long SENDClaim(Claims rec,long insuredId);
-	public List<String> retrieveAllClaims();
-	public List<String> retrieveNewClaims();
-	public List<Claims> getListCliamsLastXDays(int xDays);
+	public long SendClaim(Claims rec,long insuredId);
+	public List<String> RetrieveAllClaims();
+	public List<String> RetrieveNewClaims();
+	public List<Claims> GetListCliamsLastXDays(int xDays);
+	public void DeleteClaimById(long id);
+	public Claims OpenClaimById(long id);
+	public int CountClaimsBetween(String EndDate_ddmmmyyyy,String BiginingDate_yymmdd);
+	public void DeleteOldClaims(Date firstdate);
 	
 }

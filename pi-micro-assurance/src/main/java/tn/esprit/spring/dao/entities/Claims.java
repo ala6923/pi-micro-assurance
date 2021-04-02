@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import tn.esprit.spring.dao.entities.Insured;
 
@@ -34,6 +36,8 @@ public class Claims implements Serializable {
 	private  Insured Insured;
 	@Column(name="claimsStatus")
 	private int status=0;
+	@Temporal(TemporalType.DATE)
+	@Column(name="claimDate")
 	private Date dateClaim;
 	public Claims(long id, String description, int status, Insured insured) {
 		super();
