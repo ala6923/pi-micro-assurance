@@ -23,7 +23,7 @@ public interface ClaimRepository extends JpaRepository<Claims,Long>{
 	@Query("SELECT c FROM Claims c WHERE c.id= ?1") 
 	Claims ViewClaimById(Long id);
 	@Modifying
-    @Query("delete c FROM Claims c u WHERE c.id= :id")
+    @Query("delete c FROM Claims c WHERE c.id= :id")
     void DeleteClaim(@Param("id") Long id);
 	
 	@Modifying

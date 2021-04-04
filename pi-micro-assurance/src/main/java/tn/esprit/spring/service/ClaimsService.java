@@ -93,14 +93,14 @@ public class ClaimsService implements IClaimsService {
 		// TODO Auto-generated method stub
 		int claimNember=0;
 		List<Claims> claims=clRep.findAll(Sort.by(Sort.Direction.ASC, "dateClaim"));
-		SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
+		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
 		Date datedebut=null;
 		try {
 			datedebut = formatter.parse(BiginingDate_ddmmmyyyy);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		SimpleDateFormat formatter1 = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
+		SimpleDateFormat formatter1 = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
 		Date datefin=null;
 		try {
 			datefin = formatter1.parse(EndDate_ddmmmyyyy);

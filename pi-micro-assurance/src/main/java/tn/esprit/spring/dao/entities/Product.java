@@ -41,6 +41,9 @@ public class Product implements Serializable {
 	@Column(name="productScoring")
 	private int productScoring;
 	
+	@Column(name="indimnityPercentage")
+	private int indimnityPercentage;
+	
 	@Column(name="insurent_ID")
 	private long ID;
 	

@@ -9,11 +9,19 @@ import tn.esprit.spring.dao.entities.Product;
 
 public interface IContractService {
 	
-	Contract GenerateContract(Insured isd,Insurer inr,Product p);// gener un contrat sans signature 
-	Contract signContract(Insured isd,Insurer inr, Contract c);// signature electronique 
+	double calculateNetPrimium(Insured insured, List<Product> panier);
+	Contract calculateTotalPrimuim(Contract c);
+	Contract generateContract(Insured insured,Insurer insurer, List<Product> product);// gener un contrat sans signature 
+	Contract signContract(Insured insured,Insurer insurer, Contract contract);// signature electronique 
+	void archiveContract(Contract c);
 	void deleteContract(Contract c);
-	void UpdateContract(Contract c);
-	List<Contract> findInsuredContract(Insured Ind);
-	List<Contract> findInsurerContract(Insured Inr);
+	void updateContract(Contract c);
+	void unsignContract(Contract c);
+	List<Contract> findInsuredContracts(Insured Ind);
+	List<Contract> findInsurerContracts(Insured Inr);
+	void evaluteContract(Contract c);
+	List<Contract> viewContractsByCategory();
+	public int CountContractsBetween(String EndDate_ddmmyyyy,String BiginingDate_yymmdd);
+	
 	
 }

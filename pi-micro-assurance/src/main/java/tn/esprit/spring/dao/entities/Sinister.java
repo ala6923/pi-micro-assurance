@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -44,6 +46,12 @@ public class Sinister implements Serializable{
 	
 	@Column(name="sinisterStatus")
 	private String sinisterStatus;
+	
+	@Column(name="sinisterCost")
+	private double sinisterCost;
+	@ManyToOne
+    @JoinColumn(name="cart_id", nullable=false)
+    private Contract contract;
 	
 	@Column(name="sinisterType")
 	private String sinisterType;
@@ -148,6 +156,22 @@ public class Sinister implements Serializable{
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	private Set<Arrangment> arrangments;
+	
+	public double getSinisterCost() {
+		return sinisterCost;
+	}
+
+	public void setSinisterCost(double sinisterCost) {
+		this.sinisterCost = sinisterCost;
+	}
+
+	public Contract getContract() {
+		return contract;
+	}
+
+	public void setContract(Contract contract) {
+		this.contract = contract;
+	}
 	
 
 	

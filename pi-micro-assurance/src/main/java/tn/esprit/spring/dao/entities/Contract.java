@@ -29,8 +29,6 @@ public class Contract implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
-
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column(name="Contract_ID")
@@ -63,7 +61,7 @@ public class Contract implements Serializable {
 	private double totalPemium;
 	
 	@Column(name="ContractStatus")
-	private String status;
+	private ContractStatus status=ContractStatus.Waiting_For_Confirmation;
 	
 	@Column(name="discount")
 	private double discount;
@@ -74,16 +72,18 @@ public class Contract implements Serializable {
 	@Column(name="comission")
 	private double comission;
 	
+	
 	@Column(name="reInsurancePart")
 	private double reInsurancePart;
 	
 	@Column(name="LastUpdate")
 	private Date LastUpdate;
 	
+	
 	@Column(name="QRCode")
 	private BufferedImage QRCode;
 	public Contract(Long id, Category category, Date signDate, Date deadLineDate, String police, double payedAmount,
-			double reminingAmount, double netPremiuim, double totalPemium, String status, double discount, double tax,
+			double reminingAmount, double netPremiuim, double totalPemium, ContractStatus status, double discount, double tax,
 			double comission, double reInsurancePart,  Insurer insurer, Insured insured,
 			Set<Payment> payments, Set<Product> products, Set<Amendment> amendments) {
 		super();
@@ -160,8 +160,16 @@ public class Contract implements Serializable {
 	}
 
 
-	public String getStatus() {
+	
+
+
+	public ContractStatus getStatus() {
 		return status;
+	}
+
+
+	public void setStatus(ContractStatus status) {
+		this.status = status;
 	}
 
 
@@ -257,9 +265,7 @@ public class Contract implements Serializable {
 	}
 
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+	
 
 
 	public void setDiscount(double discount) {

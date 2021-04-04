@@ -28,9 +28,12 @@ public class Insured extends User  {
 	
 	@Column(name="Insured_CivilStatus")
 	private String civilStatus;
+	@Column(name="Segment")
+	private Segment Segment;
 	
 	@Column(name="Insured_Age")
 	private int age;
+	
 	public Insured(){};
 	public Insured(Date recordingDate, String healthStatus, String civilStatus, int age, Set<Contract> contracts,
 			Set<Claims> claims) {
@@ -96,6 +99,13 @@ public class Insured extends User  {
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	private Set<Claims> claims;
+
+	public Segment getSegment() {
+		return Segment;
+	}
+	public void setSegment(Segment segment) {
+		Segment = segment;
+	}
 	
 	
 	
