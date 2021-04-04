@@ -1,7 +1,10 @@
 package tn.esprit.spring.service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 import tn.esprit.spring.dao.entities.Category;
 import tn.esprit.spring.dao.entities.Contract;
@@ -12,7 +15,10 @@ import tn.esprit.spring.dao.entities.Sinister;
 import tn.esprit.spring.repository.SinisterRepository;
 import tn.esprit.spring.repository.ContractRepository;
 public class ContractService implements IContractService {
+	@Autowired
 	SinisterRepository Sr;
+	@Autowired
+	ContractRepository cntR;
 	
 	public double CalculatePurePrimium(Date BeginigOfYear,Date endDate,Category cat,Insurer ins){
 		List<Sinister> ls=Sr.findAll();
@@ -41,7 +47,7 @@ public class ContractService implements IContractService {
 			
 			break;
 		case life_insurance:
-			//traitement
+			//Treatment
 			break;
 		case agriculture_insurance:
 			
@@ -86,6 +92,7 @@ public class ContractService implements IContractService {
 	@Override
 	public void deleteContract(Contract c) {
 		// TODO Auto-generated method stub
+		cntR.delete(c);
 
 	}
 
@@ -102,15 +109,37 @@ public class ContractService implements IContractService {
 	}
 
 	@Override
-	public List<Contract> findInsuredContracts(Insured Ind) {
+	public List<Contract> findInsuredContracts(Insured ind) {
 		// TODO Auto-generated method stub
-		return null;
+		List<Contract> ls=cntR.findAll();
+		List<Contract> retoure = new ArrayList<Contract>();
+		for(Contract itr :ls)
+		{
+		
+		if (itr.getInsured().equals(ind))
+			retoure.add(itr);
+		}
+		
+		
+		
+		return retoure;
 	}
 
 	@Override
-	public List<Contract> findInsurerContracts(Insured Inr) {
+	public List<Contract> findInsurerContracts(Insured inr) {
 		// TODO Auto-generated method stub
-		return null;
+				List<Contract> ls=cntR.findAll();
+				List<Contract> retoure = new ArrayList<Contract>();
+				for(Contract itr :ls)
+				{
+				
+				if (itr.getInsurer().equals(inr))
+					retoure.add(itr);
+				}
+				
+				
+				
+				return retoure;
 	}
 
 	@Override
@@ -126,9 +155,20 @@ public class ContractService implements IContractService {
 	}
 
 	@Override
-	public List<Contract> viewContractsByCategory() {
+	public List<Contract> viewContractsByCategory(Category cat) {
 		// TODO Auto-generated method stub
-		return null;
+		List<Contract> ls=cntR.findAll();
+		List<Contract> retoure = new ArrayList<Contract>();
+		for(Contract itr :ls)
+		{
+		
+		if (itr.getCategory().equals(cat))
+			retoure.add(itr);
+		}
+		
+		
+		
+		return retoure;
 	}
 	
 	
