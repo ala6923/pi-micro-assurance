@@ -13,5 +13,7 @@ public interface UserServiceInterface {
 	 void deleteUser(String id);
 	 User updateUser(User u);
 	 User retrieveUser(String id);
+	boolean deleteUser(int id);
+	User retrieveUser(int id);
 
 }

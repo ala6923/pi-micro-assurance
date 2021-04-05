@@ -42,7 +42,7 @@ public abstract class User implements Serializable{
 	@Column(name="USER_PhoneNumber", length=15, nullable=false, unique=false)
 	private int phoneNumber;
 	
-	@Column(name="USER_Adress")
+	@Column(name="USER_Address")
 	private String adress;
 	
 	@Column(name="USER_Login")
@@ -53,10 +53,12 @@ public abstract class User implements Serializable{
 	
 	@Column(name="USER_status")
 	private String status;
+
+	private String address;
 	
 	public User(){};
 	
-	public User(int id, String name, String firstname, int cin, String email, int phoneNumber, String adress,
+	public User(int id, String name, String firstname, int cin, String email, int phoneNumber, String address,
 			String login, String password, String status) {
 		super();
 		this.id = id;
@@ -65,7 +67,7 @@ public abstract class User implements Serializable{
 		Cin = cin;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
-		this.adress = adress;
+		this.address = address;
 		this.login = login;
 		this.password = password;
 		this.status = status;
@@ -99,7 +101,7 @@ public abstract class User implements Serializable{
 		return phoneNumber;
 	}
 
-	public String getAdress() {
+	public String getAddress() {
 		return adress;
 	}
 
