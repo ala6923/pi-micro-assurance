@@ -138,6 +138,14 @@ public class Product implements Serializable {
 		this.products = products;
 	}
 
+	public int getIndimnityPercentage() {
+		return indimnityPercentage;
+	}
+
+	public void setIndimnityPercentage(int indimnityPercentage) {
+		this.indimnityPercentage = indimnityPercentage;
+	}
+
 
 	
 	

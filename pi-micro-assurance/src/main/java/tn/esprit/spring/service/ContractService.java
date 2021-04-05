@@ -91,7 +91,6 @@ public class ContractService implements IContractService {
 
 	@Override
 	public void deleteContract(Contract c) {
-		// TODO Auto-generated method stub
 		cntR.delete(c);
 
 	}
@@ -110,7 +109,6 @@ public class ContractService implements IContractService {
 
 	@Override
 	public List<Contract> findInsuredContracts(Insured ind) {
-		// TODO Auto-generated method stub
 		List<Contract> ls=cntR.findAll();
 		List<Contract> retoure = new ArrayList<Contract>();
 		for(Contract itr :ls)
@@ -127,7 +125,6 @@ public class ContractService implements IContractService {
 
 	@Override
 	public List<Contract> findInsurerContracts(Insured inr) {
-		// TODO Auto-generated method stub
 				List<Contract> ls=cntR.findAll();
 				List<Contract> retoure = new ArrayList<Contract>();
 				for(Contract itr :ls)
@@ -156,7 +153,6 @@ public class ContractService implements IContractService {
 
 	@Override
 	public List<Contract> viewContractsByCategory(Category cat) {
-		// TODO Auto-generated method stub
 		List<Contract> ls=cntR.findAll();
 		List<Contract> retoure = new ArrayList<Contract>();
 		for(Contract itr :ls)

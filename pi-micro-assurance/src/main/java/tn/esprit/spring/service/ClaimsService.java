@@ -1,17 +1,17 @@
 package tn.esprit.spring.service;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Locale;
 import java.util.Date;
 
-import org.hibernate.type.CalendarDateType;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.repository.query.Param;
+
 import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.dao.entities.Claims;
@@ -61,7 +61,7 @@ public class ClaimsService implements IClaimsService {
 	@Override
 	public List<Claims> GetListCliamsLastXDays(int xDays) {
 		List<Claims> claims=clRep.findAll(Sort.by(Sort.Direction.ASC, "dateClaim"));
-		List<Claims> claimsDay = null ;
+		List<Claims> claimsDay = new ArrayList<Claims>() ;
 		int i=1;
 		for(Claims c : claims ){
 			claimsDay.add(c);
