@@ -44,10 +44,10 @@ public class Product implements Serializable {
 	@Column(name="indimnityPercentage")
 	private int indimnityPercentage;
 	
-	@Column(name="insurent_ID")
-	private long ID;
+	@Column(name="insurer_ID")
+	private long insurer_ID;
 	
-	@Column(name="name_insurent")
+	@Column(name="name_insurer")
 	private String name_ins;
 	
 	@Column(name="Scale")
@@ -83,12 +83,12 @@ public class Product implements Serializable {
 		this.productScoring = productScoring;
 	}
 
-	public long getID() {
-		return ID;
+	public long getInsurer_ID() {
+		return insurer_ID;
 	}
 
-	public void setID(long iD) {
-		ID = iD;
+	public void setInsurer_ID(long iD) {
+		insurer_ID = iD;
 	}
 
 	public String getName_ins() {
@@ -119,14 +119,14 @@ public class Product implements Serializable {
 		super();
 		this.category = category;
 		this.productScoring = productScoring;
-		ID = iD;
+		insurer_ID = iD;
 		this.name_ins = name_ins;
 		this.scale = scale;
 	}
 
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", category=" + category + ", productScoring=" + productScoring + ", ID=" + ID
+		return "Product [id=" + id + ", category=" + category + ", productScoring=" + productScoring + ", ID=" + insurer_ID
 				+ ", name_ins=" + name_ins + ", scale=" + scale + "]";
 	} 
 

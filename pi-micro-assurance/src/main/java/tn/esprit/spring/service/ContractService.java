@@ -14,15 +14,22 @@ import tn.esprit.spring.dao.entities.Product;
 import tn.esprit.spring.dao.entities.Sinister;
 import tn.esprit.spring.repository.SinisterRepository;
 import tn.esprit.spring.repository.ContractRepository;
+import tn.esprit.spring.repository.InsurerRepository;
+import tn.esprit.spring.repository.ProductRepository;
 public class ContractService implements IContractService {
 	@Autowired
 	SinisterRepository Sr;
 	@Autowired
 	ContractRepository cntR;
+	@Autowired
+	ProductRepository prdR;
+	@Autowired
+	InsurerRepository inrR;
 	
 	public double CalculatePurePrimium(Date BeginigOfYear,Date endDate,Category cat,Insurer ins){
 		List<Sinister> ls=Sr.findAll();
 		int i=0;
+		
 		
 		double totalCost=0;
 		for(Sinister itr :ls)
@@ -37,43 +44,100 @@ public class ContractService implements IContractService {
 		return totalCost/i;
 	} 
 
+	
 	@Override
-	public double calculateNetPrimium(Insured insured, List<Product> panier) {
-		double netPrimium=0; 
+	public List<Contract> findContractByCategory(Category categorie) {
+		List<Contract> ls=cntR.findAll();
+		List<Contract> retoure=new ArrayList<Contract>();
+		for(Contract itr :ls)
+		{
 		
+		if(itr.getCategory().equals(categorie))
+			retoure.add(itr);
+			
+		}
+		return retoure;
+	}
+
+
+	@Override
+	public double calculateNetPrimium(Contract c,Date ppBiginigReferenceYear,Date ppEndReferenceYear, List<Product> panier) {
+		double purePrimium=0;
+		double Commission;
+		double FNG;
+		double netprim;
 		for(Product prod :panier){
-		switch(prod.getCategory()){
-		case income_insurance:
+			Insurer ins=inrR.findInsuerById(prod.getInsurer_ID());
+			purePrimium+=CalculatePurePrimium(ppBiginigReferenceYear,ppBiginigReferenceYear,prod.getCategory(),ins);
 			
-			break;
-		case life_insurance:
-			//Treatment
-			break;
-		case agriculture_insurance:
 			
+		}
+		switch(c.getInsured().getSegment()){
+		/*case Risky1:
+			c.setDi;
 			break;
-		case health_insurance:
+		case Risky2:
+			break;*/
+		case Risky3:
+			purePrimium+=purePrimium*0.01;
 			break;
+		case Risky4:
+			purePrimium+=purePrimium*0.02;
+			break;
+		case Risky5:
+			purePrimium+=purePrimium*0.04;
+			break;
+		/*case fraud:
+			
+			break;*/
 		default:
-			break ;
-		
-		
+			break;
 		
 		}
-		}
-		return netPrimium ;
+		//c.setInsured(insured);
+		Commission=c.getComission()*purePrimium/100;
+		FNG=c.getNetMangamentFees()*purePrimium/100;
+		netprim=purePrimium+Commission+FNG ;
+		c.setComission(Commission);
+		c.setNetMangamentFees(FNG);
+		c.setNetPremiuim(netprim);
+		
+		return netprim;
 	}
 
 	@Override
-	public Contract calculateTotalPrimuim(Contract c) {
+	public Contract calculateTotalPrimuim(Contract c,double tax) {
+		double totalPrimium=0;
+		switch(c.getInsured().getSegment()){
+		case Risky1:
+			c.setDiscount(c.getNetPremiuim()*0.04);
+			break;
+		case Risky2:
+			c.setDiscount(c.getNetPremiuim()*0.02);
+			break;
 		
-		// TODO Auto-generated method stub
+		default:
+			c.setDiscount(0);
+			break;
+		
+		}
+		totalPrimium=c.getNetPremiuim()+tax-c.getDiscount();
+		c.setTotalPemium(totalPrimium);
 		return c;
 	}
 
 	@Override
-	public Contract generateContract(Insured insured, Insurer insurer, List<Product> product) {
+	public Contract generateContract(Insured insured, List<Product> product) {
 		// TODO Auto-generated method stub
+		//calcule du tax
+		double tax;
+		Contract c =new Contract();
+		c.setInsured(insured);
+	
+		c.setPayedAmount(0);
+		//c.setInsurer(produ);
+		
+		
 		return null;
 	}
 

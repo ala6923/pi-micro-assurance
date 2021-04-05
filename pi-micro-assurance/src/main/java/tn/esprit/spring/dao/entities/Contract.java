@@ -60,6 +60,10 @@ public class Contract implements Serializable {
 	@Column(name="totalPemium")
 	private double totalPemium;
 	
+	@Column(name="NetMangamentFeesPercentage")
+	private double NetMangamentFees;
+	
+	
 	@Column(name="ContractStatus")
 	private ContractStatus status=ContractStatus.Waiting_For_Confirmation;
 	
@@ -69,7 +73,7 @@ public class Contract implements Serializable {
 	@Column(name="tax")
 	private double tax;
 	
-	@Column(name="comission")
+	@Column(name="comissionPercentage")
 	private double comission;
 	
 	
@@ -113,7 +117,7 @@ public class Contract implements Serializable {
 		this.products = products;
 		this.amendments = amendments;
 	}
-
+    public Contract(){};
 
 	public long getId() {
 		return id;
@@ -337,6 +341,25 @@ public class Contract implements Serializable {
 	public void setQRCode(BufferedImage qRCode) {
 		QRCode = qRCode;
 	}
+	
+	
+	
+
+
+
+
+
+	public double getNetMangamentFees() {
+		return NetMangamentFees;
+	}
+
+
+	public void setNetMangamentFees(double netMangamentFees) {
+		NetMangamentFees = netMangamentFees;
+	}
+
+
+
 
 
 
