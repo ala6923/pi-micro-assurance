@@ -32,8 +32,8 @@ class PiMicroAssuranceApplicationTests  {
 		u2.setFirstname("firstname");
 		us.addUser(u2);
 		
-	}
-
+	}}
+/*
 	@Autowired 
 	private ProductRepository productRepository;
 	
@@ -70,3 +70,4 @@ class PiMicroAssuranceApplicationTests  {
 			System.out.println(p);
 	}
 }
+*/

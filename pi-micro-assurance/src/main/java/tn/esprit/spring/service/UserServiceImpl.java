@@ -53,17 +53,8 @@ public class UserServiceImpl implements UserServiceInterface {
 		return userRep.findById(id).get();  
 		}
 
-	@Override
-	public void deleteUser(String id) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public User retrieveUser(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
+	
 
 
 }
