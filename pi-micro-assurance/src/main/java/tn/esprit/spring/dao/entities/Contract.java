@@ -65,7 +65,7 @@ public class Contract implements Serializable {
 	
 	
 	@Column(name="ContractStatus")
-	private ContractStatus status=ContractStatus.Waiting_For_Confirmation;
+	private ContractStatus status;
 	
 	@Column(name="discount")
 	private double discount;
@@ -84,8 +84,8 @@ public class Contract implements Serializable {
 	private Date LastUpdate;
 	
 	
-	@Column(name="QRCode")
-	private BufferedImage QRCode;
+	//@Column(name="QRCode")
+	//private BufferedImage QRCode;
 	public Contract(Long id, Category category, Date signDate, Date deadLineDate, String police, double payedAmount,
 			double reminingAmount, double netPremiuim, double totalPemium, ContractStatus status, double discount, double tax,
 			double comission, double reInsurancePart,  Insurer insurer, Insured insured,
@@ -105,12 +105,7 @@ public class Contract implements Serializable {
 		this.tax = tax;
 		this.comission = comission;
 		this.reInsurancePart = reInsurancePart;
-		try {
-			QRCode = QRcode.generateQRCodeImage(id.toString());
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 		this.insurer = insurer;
 		this.insured = insured;
 		this.payments = payments;
@@ -331,7 +326,7 @@ public class Contract implements Serializable {
 
 
 	
-	
+	/*
 
 	public BufferedImage getQRCode() {
 		return QRCode;
@@ -341,7 +336,7 @@ public class Contract implements Serializable {
 	public void setQRCode(BufferedImage qRCode) {
 		QRCode = qRCode;
 	}
-	
+	*/
 	
 	
 

@@ -1,13 +1,19 @@
 package tn.esprit.spring.service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import tn.esprit.spring.dao.entities.Category;
 import tn.esprit.spring.dao.entities.Contract;
+import tn.esprit.spring.dao.entities.ContractStatus;
 import tn.esprit.spring.dao.entities.Insured;
 import tn.esprit.spring.dao.entities.Insurer;
 import tn.esprit.spring.dao.entities.Product;
@@ -108,6 +114,7 @@ public class ContractService implements IContractService {
 	@Override
 	public Contract calculateTotalPrimuim(Contract c,double tax) {
 		double totalPrimium=0;
+		c.setTax(tax);
 		switch(c.getInsured().getSegment()){
 		case Risky1:
 			c.setDiscount(c.getNetPremiuim()*0.04);
@@ -127,18 +134,40 @@ public class ContractService implements IContractService {
 	}
 
 	@Override
-	public Contract generateContract(Insured insured, List<Product> product) {
+	public Contract generateContract(Contract c,Insured insured, List<Product> product) {
 		// TODO Auto-generated method stub
 		//calcule du tax
+		Date ppEndReferenceYear=null;
+		Date ppBiginigReferenceYear=null;
+		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
+
+		//String dateBiginigString = "01-01-2020";
+		try {
+			ppEndReferenceYear = formatter.parse("01-01-2021");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		try {
+			ppBiginigReferenceYear = formatter.parse("01-01-2022");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		if(verifyIfProductsOfSameInsurer(product)){
 		double tax;
-		Contract c =new Contract();
+		
+		//Contract c =new Contract();
 		c.setInsured(insured);
 	
 		c.setPayedAmount(0);
-		//c.setInsurer(produ);
+		tax=calculateNetPrimium(c,ppBiginigReferenceYear,ppEndReferenceYear, product)*0.1;
+		calculateTotalPrimuim(c,tax);
+		c.setStatus(ContractStatus.Waiting_For_Confirmation);
+		//c;
+		/*à verifier*/c.setInsurer(inrR.findById(product.get(0).getInsurer_ID()).orElseThrow(null));
 		
+		}
 		
-		return null;
+		return cntR.save(c);
 	}
 
 	@Override
@@ -211,8 +240,30 @@ public class ContractService implements IContractService {
 
 	@Override
 	public int CountContractsBetween(String EndDate_ddmmyyyy, String BiginingDate_yymmdd) {
-		// TODO Auto-generated method stub
-		return 0;
+		List<Contract> liste=cntR.findAll();
+		Date EndDate=null;
+		Date BiginingDate=null;
+		int counter=0;
+		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
+		try {
+			EndDate = formatter.parse(EndDate_ddmmyyyy);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		try {
+			BiginingDate = formatter.parse(BiginingDate_yymmdd);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		for(Contract itr :liste)
+		{
+		
+		if (itr.getSignDate().after(BiginingDate)&&itr.getSignDate().before(EndDate))
+			
+			counter++;
+		}
+		
+		return counter;
 	}
 
 	@Override
@@ -230,6 +281,21 @@ public class ContractService implements IContractService {
 		
 		return retoure;
 	}
+	
+	
+	public boolean verifyIfProductsOfSameInsurer(List<Product> liste){ 
+		Product buffer=liste.get(1);
+		 for(Product itr :liste)
+			 
+			 if(buffer.getInsurer_ID()!=itr.getInsurer_ID())
+				 return false;
+		
+		
+		
+		return true;
+		 }
+	
+	//TODO methode find risky Contracts 
 	
 	
 	

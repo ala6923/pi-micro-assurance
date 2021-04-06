@@ -56,8 +56,8 @@ public class Product implements Serializable {
 	
 	
 	
-	@ManyToMany (mappedBy = "product")
-	private List<Product> products; 
+	/*@ManyToMany (mappedBy = "product")
+	private List<Product> products; */
 
 	public long getId() {
 		return id;
@@ -130,14 +130,14 @@ public class Product implements Serializable {
 				+ ", name_ins=" + name_ins + ", scale=" + scale + "]";
 	} 
 
-	public List<Product> getProducts() {
+	/*public List<Product> getProducts() {
 		return products;
 	}
 
 	public void setProducts(List<Product> products) {
 		this.products = products;
 	}
-
+*/
 	public int getIndimnityPercentage() {
 		return indimnityPercentage;
 	}

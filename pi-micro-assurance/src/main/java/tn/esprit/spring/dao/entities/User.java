@@ -11,7 +11,7 @@ import javax.persistence.InheritanceType;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class User implements Serializable{
+public class User implements Serializable{
 	
 	/**
 	 * 

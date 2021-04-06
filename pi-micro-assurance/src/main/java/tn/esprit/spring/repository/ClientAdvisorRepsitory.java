@@ -1,5 +1,5 @@
 package tn.esprit.spring.repository;
 
-public interface ClientAdvisorRepository {
+public interface ClientAdvisorRepsitory {
 
 }

@@ -17,8 +17,8 @@ public interface ClaimRepository extends JpaRepository<Claims,Long>{
 	@Query("SELECT * FROM Claims ")
 	List<Claims> ViewClaims();
 	
-	@Query("SELECT * FROM Claims c WHERE c.status=0") 
-	List<Claims> ViewNewClaims();
+	//@Query("SELECT * FROM Claims c WHERE c.status=0") 
+	//List<Claims> ViewNewClaims();
 	
 	@Query("SELECT c FROM Claims c WHERE c.id= ?1") 
 	Claims ViewClaimById(Long id);

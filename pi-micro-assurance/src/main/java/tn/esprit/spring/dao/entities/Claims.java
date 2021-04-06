@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -33,6 +34,7 @@ public class Claims implements Serializable {
 	@Column(name="claimsDescription")
 	private String description;
 	@ManyToOne
+	@JoinColumn(name="User_ID", nullable=false)
 	private  Insured Insured;
 	@Column(name="claimsStatus")
 	private int status=0;

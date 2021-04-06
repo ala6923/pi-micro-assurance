@@ -12,7 +12,7 @@ public interface IContractService {
 	
 	double calculateNetPrimium(Contract c,Date ppBiginigReferenceYear,Date ppEndReferenceYear, List<Product> panier);
 	Contract calculateTotalPrimuim(Contract c,double tax);
-	Contract generateContract(Insured insured, List<Product> product);// gener un contrat sans signature 
+	Contract generateContract(Contract c,Insured insured, List<Product> product);// gener un contrat sans signature 
 	Contract signContract(Insured insured,Insurer insurer, Contract contract);// signature electronique l'assureur qui confirme la souscription 
 	void archiveContract(Contract c);
 	void deleteContract(Contract c);

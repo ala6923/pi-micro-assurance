@@ -14,10 +14,12 @@ public class ClientAdvisor  extends User {
 	
 	/**
 	 * 
-	 */
+	 * 
+	 
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column(name="RegistrationNumber")
 	private int RegistrationNumber; 
+*/
 }
