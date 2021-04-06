@@ -1,6 +1,8 @@
 package tn.esprit.spring.dao.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +10,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+
+
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -18,9 +24,7 @@ public class User implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * 
-	 */
+	
 	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -42,8 +46,8 @@ public class User implements Serializable{
 	@Column(name="USER_PhoneNumber", length=15, nullable=false, unique=false)
 	private int phoneNumber;
 	
-	@Column(name="USER_Adress")
-	private String adress;
+	@Column(name="USER_Address")
+	private String address;
 	
 	@Column(name="USER_Login")
 	private String login;
@@ -53,11 +57,32 @@ public class User implements Serializable{
 	
 	@Column(name="USER_status")
 	private String status;
+
+	@Column(name="users_roles")
+	@ManyToMany
+	@JoinTable(name="Role")
+	private Collection<Role> role;
 	
-	public User(){};
-	
-	public User(int id, String name, String firstname, int cin, String email, int phoneNumber, String adress,
-			String login, String password, String status) {
+	private boolean isActived;
+
+
+
+	private Collection<Role> roles;
+	public User(boolean isActived) {
+		super();
+		this.isActived = isActived;
+	}
+
+	public boolean isActived() {
+		return isActived;
+	}
+
+	public void setActived(boolean isActived) {
+		this.isActived = isActived;
+	}
+
+	public User(long id, String name, String firstname, int cin, String email, int phoneNumber, String address,
+			String login, String password, String status, Collection<Role> roles) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -65,15 +90,28 @@ public class User implements Serializable{
 		Cin = cin;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
-		this.adress = adress;
+		this.address = address;
 		this.login = login;
 		this.password = password;
 		this.status = status;
+		
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public Collection<Role> getRoles() {
+		return getRoles();
 	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public void setRoles(Collection<Role> roles) {
+		this.roles = roles;
+	}
+
+	public User(){};
+	
+
 
 	public long getId() {
 		return id;
@@ -99,10 +137,7 @@ public class User implements Serializable{
 		return phoneNumber;
 	}
 
-	public String getAdress() {
-		return adress;
-	}
-
+	
 	public String getLogin() {
 		return login;
 	}
@@ -140,7 +175,7 @@ public class User implements Serializable{
 	}
 
 	public void setAdress(String adress) {
-		this.adress = adress;
+		this.address = address;
 	}
 
 	public void setLogin(String login) {

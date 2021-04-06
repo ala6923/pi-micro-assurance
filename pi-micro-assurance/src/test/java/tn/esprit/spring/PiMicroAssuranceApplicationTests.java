@@ -32,10 +32,10 @@ class PiMicroAssuranceApplicationTests  {
 		u2.setFirstname("firstname");
 		us.addUser(u2);
 		
-	}
+	}}
 /*
 	@Autowired 
-	ProductRepository productRepository;
+	private ProductRepository productRepository;
 	
 	@Test
 	public void testCreateProduct() {
@@ -68,5 +68,6 @@ class PiMicroAssuranceApplicationTests  {
 		List<Product> prods = productRepository.findAll();
 		for (Product p:prods)
 			System.out.println(p);
-	}*/
+	}
 }
+*/

@@ -14,7 +14,7 @@ public class Admin  extends User {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@Column(name="Code")
+	/*@Column(name="Code")
 	private int CodePin; 
 	
 	public int getCodePin() {
@@ -29,7 +29,7 @@ public class Admin  extends User {
 		super();
 		CodePin = codePin;
 	} 
-	
+	*/
 
 	
 
