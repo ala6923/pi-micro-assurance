@@ -18,6 +18,7 @@ import tn.esprit.spring.dao.entities.Insured;
 import tn.esprit.spring.dao.entities.Insurer;
 import tn.esprit.spring.dao.entities.Product;
 import tn.esprit.spring.dao.entities.Sinister;
+import tn.esprit.spring.dao.entities.User;
 import tn.esprit.spring.repository.SinisterRepository;
 import tn.esprit.spring.repository.ContractRepository;
 import tn.esprit.spring.repository.InsurerRepository;
@@ -172,8 +173,10 @@ public class ContractService implements IContractService {
 
 	@Override
 	public Contract signContract(Insured insured, Insurer insurer, Contract contract) {
-		// TODO Auto-generated method stub
-		return null;
+		contract.setStatus(ContractStatus.Valid_Contract);
+		contract.setReminingAmount(0);
+		updateContract(contract);
+		return contract;
 	}
 
 	@Override
@@ -190,13 +193,16 @@ public class ContractService implements IContractService {
 
 	@Override
 	public void updateContract(Contract c) {
-		// TODO Auto-generated method stub
+		cntR.save(c);
 
 	}
 
+	
 	@Override
 	public void unsignContract(Contract c) {
-		// TODO Auto-generated method stub
+		c.setStatus(ContractStatus.Ended);
+		c.setReminingAmount(0);
+		updateContract(c);
 
 	}
 
