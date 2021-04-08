@@ -16,13 +16,13 @@ import tn.esprit.spring.dao.entities.Contract;
 
 @Repository
 public interface ContractRepository extends JpaRepository<Contract,Long>{
-	@Query("SELECT * FROM Contract ")
+	@Query("SELECT c FROM Contract c ")
 	List<Contract> ViewContracts();
-	@Query("SELECT c FROM Contract c WHERE c.id= ?1") 
-	Contract ViewCotractById(Long id);
-	@Modifying
+	/*@Query("SELECT c FROM Contract c WHERE c.id= ?1") 
+	Contract ViewCotractById(Long id);*/
+	/*@Modifying
 	@Query("delete c FROM Contract c WHERE c.id= :id")
-    void DeleteContract(@Param("id") Long id);
+    void DeleteContract(@Param("id") Long id);*/
 	//@Modifying
 	//@Query("update Contract c set c.payedAmount = :payedAmount,c.reminingAmount = :reminingAmount,c.LastUpdate = :LastUpdate where c.id = :id")
 	//void updatePaymentContract(@Param("payedAmount") double payedAmount,@Param("reminingAmount")double reminingAmount,@Param("LastUpdate") Date LastUpdate,@Param("id") Long id);

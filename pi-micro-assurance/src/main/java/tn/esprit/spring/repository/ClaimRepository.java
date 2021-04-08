@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 public interface ClaimRepository extends JpaRepository<Claims,Long>{
 
 	//@Query("SELECT * FROM T_Claims c WHERE u.role= ?1")
-	@Query("SELECT * FROM Claims ")
+	@Query("SELECT c FROM Claims c ")
 	List<Claims> ViewClaims();
 	
 	@Query("SELECT c FROM Claims c WHERE c.status=0") 
@@ -22,19 +22,21 @@ public interface ClaimRepository extends JpaRepository<Claims,Long>{
 	
 	@Query("SELECT c FROM Claims c WHERE c.id= ?1") 
 	Claims ViewClaimById(Long id);
-	@Modifying
-    @Query("delete c FROM Claims c WHERE c.id= :id")
-    void DeleteClaim(@Param("id") Long id);
+	//@Modifying
+   // @Query("delete c FROM Claims c WHERE c.id= :id")
+   // void DeleteClaim(@Param("id") Long id);
 	
+//	@Modifying
+  //  @Query("update Claims c set c.status = :Status where c.id = :id")
+   // Claims UpdateClaimStatus(@Param("stauts") int status,@Param("id") Long id);
+	/*
 	@Modifying
-    @Query("update Claims c set c.status = :Status where c.id = :id")
-    Claims UpdateClaimStatus(@Param("stauts") int status,@Param("id") Long id);
-	/*@Modifying
 	@Query(value = "INSERT INTO T_Claims (firstName, lastName, role) VALUES (:fn, :ln,:role)",nativeQuery = true)
 	void insertClaim(@Param("fn") String fn, @Param("ln") Integer ln, @Param("role");
 	Integer role);*/
-	@Query("delete c FROM Claims c u WHERE c.dateClaim<= :dateClaim")
+	/*
+	@Query("delete c FROM Claims c WHERE c.dateClaim<= :dateClaim")
     void DeleteOldClaims(@Param("dateClaim") Date dateClaim);
-	
+	*/
 	
 }

@@ -78,13 +78,13 @@ public class ClaimsService implements IClaimsService {
 
 	@Override
 	public void DeleteClaimById(long id){
-		clRep.DeleteClaim(id);
+		clRep.deleteById(id);;
 	}
 
 	@Override
 	public Claims OpenClaimById(long id) {
 		clRep.ViewClaimById(id);
-		clRep.UpdateClaimStatus(1, id);
+		//clRep.UpdateClaimStatus(1, id);
 		return clRep.ViewClaimById(id);
 	}
 
@@ -121,8 +121,9 @@ public class ClaimsService implements IClaimsService {
 	@Override
 	public void DeleteOldClaims(Date firstdate) {
 		
-		 clRep.DeleteOldClaims(firstdate);
+	//	 clRep.DeleteOldClaims(firstdate);
 		
+	
 	}
 	
 	
