@@ -1,4 +1,4 @@
-package tn.esprit.spring.service;
+/*package tn.esprit.spring.service;
 
 import java.util.List;
 
@@ -30,4 +30,4 @@ public class RoleService implements IRoleService  {
 		return rr.save(r);
 		}
 	
-}
+}*/

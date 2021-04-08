@@ -29,8 +29,8 @@ public class Role implements Serializable {
 		super();
 		this.role = role;
 		this.description = description;
-	}*/
+	}
 	
 	
 
-}
+}*/

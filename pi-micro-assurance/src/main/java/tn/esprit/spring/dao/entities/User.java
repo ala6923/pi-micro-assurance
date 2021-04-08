@@ -58,20 +58,20 @@ public class User implements Serializable{
 	@Column(name="USER_status")
 	private String status;
 
-	@Column(name="users_roles")
+/*	@Column(name="users_roles")
 	@ManyToMany
 	@JoinTable(name="Role")
-	private Collection<Role> role;
+//	private Collection<Role> role;*/
 	
 	private boolean isActived;
 
 
 
-	private Collection<Role> roles;
+/*	private Collection<Role> roles;
 	public User(boolean isActived) {
 		super();
 		this.isActived = isActived;
-	}
+	}*/
 
 	public boolean isActived() {
 		return isActived;
@@ -82,7 +82,7 @@ public class User implements Serializable{
 	}
 
 	public User(long id, String name, String firstname, int cin, String email, int phoneNumber, String address,
-			String login, String password, String status, Collection<Role> roles) {
+			String login, String password, String status/*, /*Collection<Role> roles)*/ ){
 		super();
 		this.id = id;
 		this.name = name;
@@ -97,7 +97,7 @@ public class User implements Serializable{
 		
 	}
 
-	public Collection<Role> getRoles() {
+/*	public Collection<Role> getRoles() {
 		return getRoles();
 	}
 
@@ -107,7 +107,7 @@ public class User implements Serializable{
 
 	public void setRoles(Collection<Role> roles) {
 		this.roles = roles;
-	}
+	}*/
 
 	public User(){};
 	
