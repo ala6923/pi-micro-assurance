@@ -53,7 +53,7 @@ public class ClaimsService implements IClaimsService {
 	@Override
 	public List<Claims> RetrieveNewClaims() {
 		// TODO Auto-generated method stub
-		List<Claims>	Claims =clRep.ViewNewClaims();
+		List<Claims>	Claims =clRep.ViewClaims();
 		return Claims;
 		
 	}
