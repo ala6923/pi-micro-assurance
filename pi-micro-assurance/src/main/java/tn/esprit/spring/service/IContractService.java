@@ -7,6 +7,7 @@ import tn.esprit.spring.dao.entities.Contract;
 import tn.esprit.spring.dao.entities.Insured;
 import tn.esprit.spring.dao.entities.Insurer;
 import tn.esprit.spring.dao.entities.Product;
+import tn.esprit.spring.dao.entities.User;
 
 public interface IContractService {
 	
@@ -24,6 +25,8 @@ public interface IContractService {
 	List<Contract> viewContractsByCategory(Category cat);
 	public int CountContractsBetween(String EndDate_ddmmyyyy,String BiginingDate_yymmdd);
 	List<Contract> findContractByCategory(Category categorie);
+
+	
 	
 	
 	
