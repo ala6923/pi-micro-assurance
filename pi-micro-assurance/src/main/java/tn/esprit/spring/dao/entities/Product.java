@@ -54,7 +54,7 @@ public class Product implements Serializable {
 	private String scale;
 	
 	
-	
+	/*
 	
 	@Entity
 	@Table(name = "T_PRODUCT")
@@ -69,7 +69,7 @@ public class Product implements Serializable {
 	@Column(name="PRODUCT_SCORING")
 	Long productScoring; 
 	@ManyToMany(mappedBy="contractProducts", cascade = CascadeType.ALL) 
-	private Set<Contract> contracts;
+	private Set<Contract> contracts;*/
 
 
 	public long getId() {

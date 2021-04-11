@@ -1,6 +1,11 @@
 package tn.esprit.spring.service;
 
+import java.io.IOException;
 import java.util.*;
+
+import com.itextpdf.text.BadElementException;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
 
 import tn.esprit.spring.dao.entities.Category;
 import tn.esprit.spring.dao.entities.Contract;
@@ -25,6 +30,7 @@ public interface IContractService {
 	List<Contract> viewContractsByCategory(Category cat);
 	public int CountContractsBetween(String EndDate_ddmmyyyy,String BiginingDate_yymmdd);
 	List<Contract> findContractByCategory(Category categorie);
+	Document generatePDFversion(Contract c) throws IOException, BadElementException, DocumentException;
 
 	
 	
