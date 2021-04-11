@@ -1,28 +1,36 @@
 package tn.esprit.spring.repository;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.query.Param;
 
 import tn.esprit.spring.dao.entities.Product;
 
-@Repository
-public interface ProductRepository extends JpaRepository<Product,Long>{
-/*
-	@Query("SELECT p FROM Product p WHERE p.name_ins= :name_ins")
-	List<Product> retrieveProductsByName_ins(@Param("name_ins") Name_ins name_ins);
+public interface ProductRepository<IdProduct, idProduct> extends JpaRepository<Product, Long> {
+	
+	@Query("SELECT p FROM Product p WHERE p.idProduct= :idProduct")
+	List<Product> retrieveUsersByIdProduct(@Param("idProduct") IdProduct idProduct);
 
 	
 	@Modifying
-	@Query("update User p set p.id = :role where p. = :id")
-	int updateProductStatusById(@Param("id") Id id, @Param("id1") String id1);
+	@Query("update Product p set p.idProduct = :idProduct where p.idInsurent = :in")
+	int updateUserStatusByIdInsurent(@Param("idProduct") IdProduct idProduct, @Param("fname") String in);
+	
 	
 	@Modifying
-	@Query(value = "INSERT INTO T_PRODUCT (id, name_ins, scale) VALUES (:i, :ns, :scale)", nativeQuery = true)
-	void insertProduct(@Param("id") String id, @Param("ns") Integer ns, @Param("scale") Integer scale);
+	@Query("DELETE FROM Product p WHERE p.idProduct = :idProduct AND p.idInsurent = :in")
+	int deleteProductByStatusAndIdInsurent(@Param("idProduct") IdProduct idProduct, @Param("in") String in);
 	
-	*/
+	
+	@Modifying
+	@Query(value = "INSERT INTO T_PRODUCT (idProduct, idInsurent, nameinsurentProduct, scoringProduct, scaleProduct, dateCreation) VALUES (:ip, :in, :np, :sp, :scp, :date)", nativeQuery = true)
+	void insertProduct(@Param("ip") Long ip, @Param("in") Long in, @Param("np") String np, @Param("sp") Double sp, @Param("scp") String scp, @Param("dc") Date date );
+
+
+
 }
+
