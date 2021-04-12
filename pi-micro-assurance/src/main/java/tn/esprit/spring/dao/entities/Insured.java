@@ -110,8 +110,32 @@ public class Insured extends User  {
 	@OneToMany(cascade = CascadeType.ALL)
 	private Set<Claims> claims;
 
-	public Segment getSegment() {
-		return segment;
+	public int getSegment() {
+		int n=0;
+		switch(this.segment){
+		case Risky1:
+			n=0;
+			break;
+		case Risky2:
+			n= 1;
+			break;
+		case Risky3:
+			n= 2;
+			break;
+		case Risky4:
+			n= 3;
+			break;
+		case Risky5:
+			n= 4;
+			break;
+		case fraud:
+			n= 5;
+			break;
+		default:
+			break;
+		
+		}
+		return n;
 	}
 	public void setSegment(int n) {
 		

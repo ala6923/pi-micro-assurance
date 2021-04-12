@@ -21,14 +21,22 @@ public class KMeans {
     
     public static void mainfonction(List<Insured> li) {
     	
-    	
     	KMeans kmeans = new KMeans();
-    	kmeans.init(li);
+    	List<Point> list =new ArrayList<Point>(kmeans.init(li));
     	kmeans.calculate();
+    	Point current=kmeans.points.get(0);
+    	int i=1;
+    	for(Point p : list ){
+    		
+    		if (p.getCluster()==current.getCluster())
+    			li.get(0).setSegment(li.get(i).getSegment());
+    		i++;
+    	}
+    	
     }
     
     //initialization de processus
-    public void init(List<Insured> li) {
+    public List<Point> init(List<Insured> li) {
     	List<Point> listpo=new ArrayList<Point>() ;
     	for (Insured i:li){
     		Point p = new Point();
@@ -42,7 +50,7 @@ public class KMeans {
     		cluster.setCentroid(centroid);
     		clusters.add(cluster);
     	}
-    	
+    	return listpo;
     }
 
     

@@ -110,13 +110,13 @@ public class ContractService implements IContractService {
 			break;
 		case Risky2:
 			break;*/
-		case Risky3:
+		case 2:
 			purePrimium+=purePrimium*0.01;
 			break;
-		case Risky4:
+		case 3:
 			purePrimium+=purePrimium*0.02;
 			break;
-		case Risky5:
+		case 4:
 			purePrimium+=purePrimium*0.04;
 			break;
 		/*case fraud:
@@ -142,10 +142,10 @@ public class ContractService implements IContractService {
 		double totalPrimium=0;
 		c.setTax(tax);
 		switch(c.getInsured().getSegment()){
-		case Risky1:
+		case 0:
 			c.setDiscount(c.getNetPremiuim()*0.04);
 			break;
-		case Risky2:
+		case 1:
 			c.setDiscount(c.getNetPremiuim()*0.02);
 			break;
 		
