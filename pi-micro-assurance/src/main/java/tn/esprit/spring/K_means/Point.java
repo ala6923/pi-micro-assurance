@@ -20,28 +20,28 @@ public class Point {
     
     public Point(){} 
     
-    public Point InsuredToPoint(Insured ind){
-    	Point p =new Point();
-    	p.x=ind.getAge()*2;
-    	p.y=ind.getSinsterNumber()*10;
+    public void InsuredToPoint(Insured ind){
+    	
+    	this.x=ind.getAge()*2;
+    	this.y=ind.getSinsterNumber()*10;
     	switch(ind.getGender()){
 		case F:
-			p.z=1;
+			this.z=1;
 			break;
 		case M:
-			p.z=4;
+			this.z=4;
 			break;
 		case O:
-			p.z=8;
+			this.z=8;
 			break;
 		default:
-			p.z=0;
+			this.z=0;
 			break;
     	}
-    	p.u=ind.getIncome()*2;
-    	p.v=ind.getHealthStatus()*10;
+    	this.u=ind.getIncome()*2;
+    	this.v=ind.getHealthStatus()*10;
     	
-    	return null;
+    	//return null;
     }
     public Point(double x,double y,double z,double u,double v)
     {
