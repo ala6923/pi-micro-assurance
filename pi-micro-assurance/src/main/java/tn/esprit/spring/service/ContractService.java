@@ -30,6 +30,7 @@ import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Section;
+import com.itextpdf.text.pdf.BarcodeQRCode;
 import com.itextpdf.text.pdf.CMYKColor;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
@@ -159,7 +160,7 @@ public class ContractService implements IContractService {
 	}
 
 	@Override
-	public Contract generateContract(Contract c,Insured insured, List<Product> product) {
+	public Contract generateContract(Contract c,Insured insured, List<Product> product) throws ParseException {
 		// TODO Auto-generated method stub
 		//calcule du tax
 		Date ppEndReferenceYear=null;
@@ -167,16 +168,11 @@ public class ContractService implements IContractService {
 		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
 
 		//String dateBiginigString = "01-01-2020";
-		try {
 			ppEndReferenceYear = formatter.parse("01-01-2021");
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		try {
-			ppBiginigReferenceYear = formatter.parse("01-01-2022");
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+		
+		
+			ppBiginigReferenceYear = formatter.parse("01-01-2020");
+		
 		if(verifyIfProductsOfSameInsurer(product)){
 		double tax;
 		
@@ -313,6 +309,22 @@ public class ContractService implements IContractService {
 		return retoure;
 	}
 	
+	@Override
+	public List<Contract> viewContractsByStatus(ContractStatus stat) {
+		List<Contract> ls=cntR.findAll();
+		List<Contract> retoure = new ArrayList<Contract>();
+		for(Contract itr :ls)
+		{
+		
+		if (itr.getStatus().equals(stat))
+			retoure.add(itr);
+		}
+		
+		
+		
+		return retoure;
+	}
+	
 	
 	public boolean verifyIfProductsOfSameInsurer(List<Product> liste){ 
 		Product buffer=liste.get(1);
@@ -329,16 +341,19 @@ public class ContractService implements IContractService {
 
 	@Override
 	public Document generatePDFversion(Contract c) throws IOException, DocumentException {
-		// TODO Auto-generated method stub
 		Document document = new Document(PageSize.A4, 50, 50, 50, 50);
-		PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("C:\\temp\\ITextTest.pdf"));
+		PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("C:\\temp\\"+String.valueOf(c.getInsurer().getId())+".pdf"));
 		document.open();
 
-		Paragraph title1 = new Paragraph("Insurance Contract",
+		Paragraph title1 = new Paragraph("Insurance Contract Gardian Angel",
 		FontFactory.getFont(FontFactory.HELVETICA,
 		18, Font.BOLDITALIC, new CMYKColor(0, 255, 255,17)));
 		Chapter chapter1 = new Chapter(title1, 1);
 		chapter1.setNumberDepth(0);
+		
+		
+		
+		
 		Paragraph title11 = new Paragraph("POLICY",
 		FontFactory.getFont(FontFactory.HELVETICA, 16, Font.BOLD,
 		new CMYKColor(0, 255, 255,17)));
@@ -391,18 +406,24 @@ public class ContractService implements IContractService {
 		
 		section1.add(t);
 		
-		Image image2 = Image.getInstance("c:\\path\\logo.bmp");
-		image2.scaleAbsolute(120f, 120f);
-		section1.add(image2);
+		Image logo = Image.getInstance("c:\\tempo\\logo.bmp");
+		logo.scaleAbsolute(100, 100);
+		section1.add(logo);
+		
+		BarcodeQRCode barcodeQRCode = new BarcodeQRCode(String.valueOf(c.getInsurer().getId())+String.valueOf(c.getId()), 1000, 1000, null);
+        Image codeQrImage = barcodeQRCode.getImage();
+        codeQrImage.scaleAbsolute(100, 100);
+        document.add(codeQrImage);
+		/*
 		Paragraph title2 = new Paragraph("Using Anchor", FontFactory.getFont(FontFactory.HELVETICA, 16, Font.BOLD, new CMYKColor(0, 255, 0, 0)));
 		section1.add(title2);
 		title2.setSpacingBefore(5000);
 		Anchor anchor2 = new Anchor("Back To Top");
 		anchor2.setReference("#BackToTop");
-		section1.add(anchor2);
+		section1.add(anchor2);*/
 		document.add(chapter1);
 		document.close();
-		return null;
+		return document;
 	}
 	
 	//TODO methode find risky Contracts 

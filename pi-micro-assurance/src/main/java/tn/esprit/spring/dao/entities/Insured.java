@@ -24,18 +24,28 @@ public class Insured extends User  {
 	private Date recordingDate;
 	
 	@Column(name="Insured_health")
-	private String healthStatus;
+	private int healthStatus;
+	
 	
 	@Column(name="Insured_CivilStatus")
 	private String civilStatus;
+	
+	@Column(name="Gender")
+	private Gender gender;
+	
+	@Column(name="sinster_number")
+	private int sinsterNumber;
+	
 	@Column(name="Segment")
-	private Segment Segment;
+	private Segment segment;
 	
 	@Column(name="Insured_Age")
 	private int age;
+	@Column(name="Income")
+	private int income;
 	
 	public Insured(){};
-	public Insured(Date recordingDate, String healthStatus, String civilStatus, int age, Set<Contract> contracts,
+	public Insured(Date recordingDate, int healthStatus, String civilStatus, int age, Set<Contract> contracts,
 			Set<Claims> claims) {
 		super();
 		this.recordingDate = recordingDate;
@@ -50,7 +60,7 @@ public class Insured extends User  {
 		return recordingDate;
 	}
 
-	public String getHealthStatus() {
+	public int getHealthStatus() {
 		return healthStatus;
 	}
 
@@ -74,7 +84,7 @@ public class Insured extends User  {
 		this.recordingDate = recordingDate;
 	}
 
-	public void setHealthStatus(String healthStatus) {
+	public void setHealthStatus(int healthStatus) {
 		this.healthStatus = healthStatus;
 	}
 
@@ -101,10 +111,50 @@ public class Insured extends User  {
 	private Set<Claims> claims;
 
 	public Segment getSegment() {
-		return Segment;
+		return segment;
 	}
-	public void setSegment(Segment segment) {
-		Segment = segment;
+	public void setSegment(int n) {
+		
+		switch(n){
+		case 0:
+			this.segment=Segment.Risky1;
+			break;
+		case 1:
+			this.segment=Segment.Risky2;
+			break;
+		case 2:
+			this.segment=Segment.Risky3;
+			break;
+		case 3:
+			this.segment=Segment.Risky4;
+			break;
+		case 4:
+			this.segment=Segment.Risky5;
+			break;
+		case 5:
+			this.segment=Segment.fraud;
+			break;
+			
+		}
+		;
+	}
+	public Gender getGender() {
+		return gender;
+	}
+	public void setGender(Gender gender) {
+		this.gender = gender;
+	}
+	public int getSinsterNumber() {
+		return sinsterNumber;
+	}
+	public void setSinsterNumber(int sinsterNumber) {
+		this.sinsterNumber = sinsterNumber;
+	}
+	public int getIncome() {
+		return income;
+	}
+	public void setIncome(int income) {
+		this.income = income;
 	}
 	
 	
