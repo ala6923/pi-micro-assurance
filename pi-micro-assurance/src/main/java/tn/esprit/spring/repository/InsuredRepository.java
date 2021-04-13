@@ -9,6 +9,6 @@ import tn.esprit.spring.dao.entities.Insured;
 @Repository
 public interface InsuredRepository extends JpaRepository<Insured,Long>{
 
-	Insured findById(long insuredId);
+	//Insured findById(long insuredId);
 
 }

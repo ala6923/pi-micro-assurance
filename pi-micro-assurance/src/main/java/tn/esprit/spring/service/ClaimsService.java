@@ -30,7 +30,7 @@ public class ClaimsService implements IClaimsService {
 		
 		
 		
-		Insured ins = insRep.findById(insuredId);
+		Insured ins = insRep.findById(insuredId).get();
 		claim.setInsured(ins);
 	    Calendar calendar = Calendar.getInstance();
 	    claim.setDateClaim(calendar.getTime());
