@@ -181,7 +181,28 @@ public class Insured extends User  {
 		this.income = income;
 	}
 	
+	@JsonIgnore
+	@OneToMany(cascade = CascadeType.ALL , mappedBy="insured")
+	private Set<Vote> votes;
 	
+	@JsonIgnore
+	@OneToMany(cascade = CascadeType.ALL , mappedBy="insured")
+	private Set<Comment> comments;
+	
+	public Set<Vote> getVotes() {
+		return votes;
+	}
+	public void setVotes(Set<Vote> votes) {
+		this.votes = votes;
+	}
+	
+	public Set<Comment> getComments() {
+		return comments;
+	}
+	
+	public void setComments(Set<Comment> comments) {
+		this.comments = comments;
+	}
 	
 
 

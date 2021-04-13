@@ -1,8 +1,12 @@
 package tn.esprit.spring.repository;
 
+
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import tn.esprit.spring.dao.entities.Vote;
+
 @Repository
-public interface VoteRepository {
+public interface VoteRepository extends CrudRepository<Vote, Integer>{
 
 }

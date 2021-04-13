@@ -14,6 +14,10 @@ public class Admin  extends User {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	@OneToMany(cascade = CascadeType.ALL , mappedBy="admin")
+	private Set< Item > items;
+	
 	/*@Column(name="Code")
 	private int CodePin; 
 	
