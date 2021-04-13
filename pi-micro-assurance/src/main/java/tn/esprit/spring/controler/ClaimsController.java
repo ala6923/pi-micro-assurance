@@ -35,4 +35,10 @@ public class ClaimsController {
 			
 			return Icl.RetrieveAllClaims();
 		}
+		@GetMapping(value = "/retrieve-test")
+		@ResponseBody
+         public String getclaim() {
+			
+			return Icl.OpenClaimById(1549).getDescription();
+		}
 }
