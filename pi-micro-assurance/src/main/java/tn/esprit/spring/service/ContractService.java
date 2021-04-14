@@ -46,6 +46,7 @@ import tn.esprit.spring.dao.entities.Sinister;
 import tn.esprit.spring.dao.entities.User;
 import tn.esprit.spring.repository.SinisterRepository;
 import tn.esprit.spring.repository.ContractRepository;
+import tn.esprit.spring.repository.InsuredRepository;
 import tn.esprit.spring.repository.InsurerRepository;
 import tn.esprit.spring.repository.ProductRepository;
 public class ContractService implements IContractService {
@@ -57,6 +58,10 @@ public class ContractService implements IContractService {
 	ProductRepository prdR;
 	@Autowired
 	InsurerRepository inrR;
+	@Autowired
+	InsuredRepository indR;
+	
+	
 	
 	public double CalculatePurePrimium(Date BeginigOfYear,Date endDate,Category cat,Insurer ins){
 		List<Sinister> ls=Sr.findAll();
@@ -99,7 +104,7 @@ public class ContractService implements IContractService {
 		double FNG;
 		double netprim;
 		for(Product prod :panier){
-			Insurer ins=inrR.findInsuerById(prod.getInsurer_ID());
+			Insurer ins=inrR.findById(prod.getInsurer_ID()).get();
 			purePrimium+=CalculatePurePrimium(ppBiginigReferenceYear,ppBiginigReferenceYear,prod.getCategory(),ins);
 			
 			
@@ -169,9 +174,14 @@ public class ContractService implements IContractService {
 
 		//String dateBiginigString = "01-01-2020";
 			ppEndReferenceYear = formatter.parse("01-01-2021");
-		
-		
 			ppBiginigReferenceYear = formatter.parse("01-01-2020");
+	
+			
+			
+			
+			
+			
+			//insured.setSegment(n);
 		
 		if(verifyIfProductsOfSameInsurer(product)){
 		double tax;

@@ -30,7 +30,7 @@ public class ClaimsService implements IClaimsService {
 		
 		
 		
-		Insured ins = insRep.findById(insuredId);
+		Insured ins = insRep.findById(insuredId).get();
 		claim.setInsured(ins);
 	    Calendar calendar = Calendar.getInstance();
 	    claim.setDateClaim(calendar.getTime());
@@ -84,7 +84,7 @@ public class ClaimsService implements IClaimsService {
 
 	@Override
 	public Claims OpenClaimById(long id) {
-		Claims c =clRep.ViewClaimById(id);
+		Claims c =clRep.findById(id).get();//.ViewClaimById(id);
 		c.setStatus(1);
 		clRep.save(c);
 		
@@ -125,8 +125,6 @@ public class ClaimsService implements IClaimsService {
 	@Override
 	public void DeleteOldClaims(Date firstdate) {
 		List<Claims> c =RetrieveAllClaims();
-		
-	//	 clRep.DeleteOldClaims(firstdate);
 		for (Claims claim: c){
 			if(claim.getDateClaim().before(firstdate))
 				clRep.delete(claim);
