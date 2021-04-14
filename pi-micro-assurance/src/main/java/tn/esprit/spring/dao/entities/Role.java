@@ -1,4 +1,4 @@
-/*package tn.esprit.spring.dao.entities;
+package tn.esprit.spring.dao.entities;
 
 import java.io.Serializable;
 
@@ -33,4 +33,4 @@ public class Role implements Serializable {
 	
 	
 
-}*/
+}
