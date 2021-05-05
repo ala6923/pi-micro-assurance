@@ -26,7 +26,7 @@ public class Item implements Serializable{
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Column(name="Item_ID")
-	private int id; // Clé primaire
+	private int id; // ClÃ© primaire
 	
 	@Column
 	private String title;
@@ -126,6 +126,7 @@ public class Item implements Serializable{
 
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
+		/////nice
 	}
 
 	public List<Vote> getVotes() {
